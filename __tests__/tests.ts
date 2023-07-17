@@ -1,18 +1,24 @@
 import { afterEach, beforeEach, describe, expect, test } from '@jest/globals';
-import { Browser, WebDriver } from 'selenium-webdriver';
-import { Driver } from '../src/driver';
+import { WebDriver } from 'selenium-webdriver';
 import { resolve } from 'path';
+import { readFileSync } from 'fs';
+import { BrowserConfig, Driver } from '../src/driver';
 import { Product, VendingPage } from '../src/vending-page';
+
+type TestConfig = {
+    browser: BrowserConfig,
+    autPath: string
+}
 
 describe("Vending machine tests", () => {
     let driver: WebDriver
     let vendingPage: VendingPage
 
     beforeEach(async () => {
-        driver = Driver.initiate(Browser.FIREFOX)
-        // driver = Driver.initiate(Browser.CHROME)
+        let config: TestConfig = JSON.parse(readFileSync("resources/config.json", "utf-8"))
+        driver = Driver.initiate(config.browser)
         vendingPage = new VendingPage(driver)
-        await driver.get("file://" + resolve("resources/aut/index.html"))
+        await driver.get("file://" + resolve(config.autPath))
     }, 10000)
 
     afterEach(async () => {

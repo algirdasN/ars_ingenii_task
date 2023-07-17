@@ -1,0 +1,8 @@
+{
+    "browser": {
+        "name": "firefox",
+        "maximized": true,
+        "private": true
+    },
+    "autPath": "resources/aut/index.html"
+}
