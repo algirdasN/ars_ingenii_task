@@ -1,5 +1,15 @@
 {
   "devDependencies": {
+    "jest": "^29.6.1",
+    "ts-selenium": "^1.0.0",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@types/selenium-webdriver": "^4.1.15",
+    "selenium-webdriver": "^4.10.0",
+    "ts-jest": "^29.1.1"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
