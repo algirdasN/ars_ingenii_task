@@ -38,8 +38,8 @@ describe("Vending machine tests", () => {
 
     test.each([
         [[1, 0, 0, 0], Product.TWIX],
-        [[0, 1, 0, 0], Product.CHOCOLATE],
-        [[0, 0, 3, 0], Product.BROWNIE]
+        [[0, 0, 2, 1], Product.CHOCOLATE],
+        [[0, 1, 0, 0], Product.BROWNIE]
     ])("Succesful purchase test", async (coins: number[], product: Product) => {
         vendingPage.setCoins(coins)
         vendingPage.clickProductButton(product)
