@@ -27,6 +27,7 @@ describe("Vending machine tests", () => {
         }
     })
 
+
     test.each([
         [[1, 1, 1, 1], 8.10],
         [[2, 3, 4, 5], 20.50],
@@ -35,6 +36,7 @@ describe("Vending machine tests", () => {
 
         await expect(vendingPage.getTotalValue()).resolves.toEqual(total)
     })
+
 
     test.each([
         [[1, 0, 0, 0], Product.TWIX],
@@ -47,6 +49,7 @@ describe("Vending machine tests", () => {
         await expect(vendingPage.getMessageText()).resolves.toContain(product + " has been bought.")
     })
 
+
     test.each([
         [[1, 0, 0, 0], Product.BROWNIE, 3],
         [[0, 1, 0, 1], Product.CHOCOLATE, 0.1],
@@ -58,6 +61,7 @@ describe("Vending machine tests", () => {
         await expect(vendingPage.getReturnedValue()).resolves.toEqual(change)
     })
 
+
     test.each([
         [[0, 0, 1, 9], Product.CHOCOLATE, 1.9],
         [[0, 0, 0, 1], Product.TWIX, 0.1],
@@ -68,6 +72,7 @@ describe("Vending machine tests", () => {
         await expect(vendingPage.getMessageText()).resolves.toContain("You have not paid enough.")
         await expect(vendingPage.getReturnedValue()).resolves.toEqual(returned)
     })
+
 
     test("Cancel test", async () => {
         vendingPage.setCoins([1, 1, 1, 1])
