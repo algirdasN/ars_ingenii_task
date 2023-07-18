@@ -76,6 +76,7 @@ describe("Vending machine tests", () => {
 
     test("Cancel test", async () => {
         vendingPage.setCoins([1, 1, 1, 1])
+        vendingPage.clickCancelButton()
 
         await expect(vendingPage.getTotalValue()).resolves.toEqual(0)
         await expect(vendingPage.getReturnedValue()).resolves.toEqual(8.1)
